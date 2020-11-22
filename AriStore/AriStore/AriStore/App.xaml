@@ -3,6 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AriStore.App">
     <Application.Resources>
-
+        <!--Controles-->
+        <Style x:Key="FrameVerde" TargetType="Frame">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="#71D670"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <Style x:Key="LabelApp" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
     </Application.Resources>
 </Application>

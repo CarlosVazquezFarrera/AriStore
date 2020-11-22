@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AriStore.MainPage"
+             xmlns:ViewModel="clr-namespace:AriStore.ViewModels">
+    <ContentPage.BindingContext>
+        <ViewModel:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <!--Barra de busqueda-->
+        <SearchBar Placeholder="Nombre"
+                   Text="{Binding NombreFiltro}"/>
+        <!--Header-->
+        <Frame Style="{StaticResource FrameVerde}"
+               Margin="0, 20, 0, 0">
+            <Grid ColumnDefinitions="*, 2*" 
+                  RowDefinitions="Auto">
+                <Label Grid.Column="0" 
+                       Grid.Row="0" 
+                       Text="Número"
+                       Style="{StaticResource LabelApp}"/>
+                <Label Grid.Column="1" 
+                       Grid.Row="0" 
+                       Text="Nombre"
+                       Style="{StaticResource LabelApp}"/>
+            </Grid>
+        </Frame>
+        <!--Clientes-->
+        <CollectionView ItemsSource="{Binding Clientes}">
+            <CollectionView.EmptyView>
+                <Grid>
+                    <Label HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="CenterAndExpand" 
+                           Style="{StaticResource LabelApp}"
+                           Text="Sin Datos"/>
+                </Grid>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*, 2*" 
+                          RowDefinitions="Auto">
+                        <Label Grid.Column="0" 
+                               Text="{Binding Id}"
+                               Style="{StaticResource LabelApp}"/>
+                        <Label Grid.Column="1"
+                               Style="{StaticResource LabelApp}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Nombre}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding Paterno}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding Materno}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--Agregar-->
+        <Button BackgroundColor="Transparent" Text="Nuevo"/>
+    </StackLayout>
+
+</ContentPage>
