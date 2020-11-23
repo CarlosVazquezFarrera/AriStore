@@ -3,7 +3,6 @@
     using AriStore.Enumeration;
     using AriStore.Models;
     using AriStore.OS;
-    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System;
     using System.Collections.Generic;
@@ -12,7 +11,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class MainViewModel: ViewModelBase
+    public class MainViewModel: BaseViewModel
     {
         #region Constructor
         public MainViewModel()
@@ -125,7 +124,10 @@
                  );
             }
         }
-
+        /// <summary>
+        /// Agregar un cliente a la base de datos y a la lista que se muestra en la vista
+        /// </summary>
+        /// <param name="clienteAgregado"></param>
         private async void AgregarCliente(Cliente clienteAgregado)
         {
             try

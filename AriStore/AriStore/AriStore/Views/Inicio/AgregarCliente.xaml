@@ -9,7 +9,22 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Image Source="user"/>
+            <!--Atras-->
+            <Grid ColumnDefinitions=".15*, *">
+                <!--Atras-->
+                <Button Command="{Binding AtrasCommand}"
+                        ImageSource="atras"
+                        Style="{StaticResource atrasBoton}"/>
+                <!--Cambiar contraseña-->
+                <Label FontSize="25" 
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       HorizontalOptions="Center"
+                       Text="Agregar Cliente"
+                       VerticalOptions="Center"/>
+            </Grid>
+            <Image Source="user"
+                   WidthRequest="250"/>
             <Entry Text="{Binding Cliente.Nombre}" 
                    Placeholder="Nombre"/>
             <Entry Text="{Binding Cliente.Paterno}" 
