@@ -29,10 +29,10 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <!--Atras-->
+                <!--Historial-->
                 <Button Command="{Binding AtrasCommand}"
                         Grid.Column="2"
-                        ImageSource="atras"
+                        ImageSource="historial"
                         Style="{StaticResource atrasBoton}"/>
             </Grid>
         </StackLayout>

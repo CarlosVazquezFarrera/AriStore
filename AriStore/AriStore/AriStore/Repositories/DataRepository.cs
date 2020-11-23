@@ -96,8 +96,19 @@
             catch (Exception)
             {
 
-                throw;
+                return 0;
             }
+        }
+
+        /// <summary>
+        /// Obtiene un elemento en específico
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entidad"></param>
+        /// <returns></returns>
+        public async Task<T> ObtenerPorId<T>(T entidad) where T : new()
+        {
+            return await conn.FindAsync<T>(entidad);
         }
 
         /// <summary>

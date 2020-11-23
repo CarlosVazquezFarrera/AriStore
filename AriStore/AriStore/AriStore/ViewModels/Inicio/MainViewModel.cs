@@ -5,6 +5,7 @@
     using AriStore.OS;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -19,8 +20,7 @@
             GetData();
             MessagingCenter.Subscribe<Cliente>(this, "agregarCliente", (cliente) =>
             {
-                clientesData.Add(cliente);
-                clientes.Add(cliente);
+                AgregarCliente(cliente);
             });
         }
         #endregion
@@ -124,7 +124,25 @@
                      )
                  );
             }
-        } 
+        }
+
+        private async void AgregarCliente(Cliente clienteAgregado)
+        {
+            try
+            {
+                int resultado = await App.dataRepository.Insertar<Cliente>(clienteAgregado);
+                if (resultado == 1)
+                {
+                    clientesData.Add(clienteAgregado);
+                    clientes.Add(clienteAgregado);
+                }
+            }
+            catch (Exception)
+            {
+
+                await App.Current.MainPage.DisplayAlert("Error", $"Hubo un error a agregar el cliente {clienteAgregado.Nombre}", "Aceptar");
+            }
+        }
         #endregion
     }
 }
