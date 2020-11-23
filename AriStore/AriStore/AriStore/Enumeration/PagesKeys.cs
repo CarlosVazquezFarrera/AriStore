@@ -3,6 +3,7 @@
     public enum PagesKeys
     {
         AgregarCliente,
-        DetalleCliente
+        DetalleCliente,
+        NuevoPedido
     }
 }

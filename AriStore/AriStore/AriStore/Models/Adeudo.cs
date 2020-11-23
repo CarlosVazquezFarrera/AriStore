@@ -11,6 +11,8 @@
         [NotNull]
         public Guid IdCliente { get; set; }
         [NotNull]
-        public decimal Total { get; set; }
+        public float Total { get; set; }
+        [NotNull]
+        public DateTime Fecha { get; set; }
     }
 }

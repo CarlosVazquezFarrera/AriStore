@@ -1,6 +1,7 @@
 ﻿namespace AriStore.Models
 {
     using SQLite;
+    using System;
 
     [Table("Detalle")]
     public partial class Detalle
@@ -12,7 +13,9 @@
         [NotNull]
         public int IdAdeudo { get; set; }
         [NotNull]
-        public decimal Monto { get; set; }
+        public float Monto { get; set; }
+        [NotNull]
+        public string Fecha { get; set; }
 
     }
 
