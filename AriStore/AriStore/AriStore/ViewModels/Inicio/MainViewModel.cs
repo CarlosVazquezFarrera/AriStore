@@ -125,25 +125,13 @@
             }
         }
         /// <summary>
-        /// Agregar un cliente a la base de datos y a la lista que se muestra en la vista
+        /// Agregar un cliente a la lista que se muestra en la vista
         /// </summary>
         /// <param name="clienteAgregado"></param>
-        private async void AgregarCliente(Cliente clienteAgregado)
+        private void AgregarCliente(Cliente clienteAgregado)
         {
-            try
-            {
-                int resultado = await App.dataRepository.Insertar<Cliente>(clienteAgregado);
-                if (resultado == 1)
-                {
-                    clientesData.Add(clienteAgregado);
-                    clientes.Add(clienteAgregado);
-                }
-            }
-            catch (Exception)
-            {
-
-                await App.Current.MainPage.DisplayAlert("Error", $"Hubo un error a agregar el cliente {clienteAgregado.Nombre}", "Aceptar");
-            }
+            clientesData.Add(clienteAgregado);
+            clientes.Add(clienteAgregado);
         }
         #endregion
     }

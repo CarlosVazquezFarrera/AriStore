@@ -31,7 +31,8 @@
                    Placeholder="Apellido Paterno"/>
             <Entry Text="{Binding Cliente.Materno}" 
                    Placeholder="Apellido Materno"/>
-            <Button Command="{Binding AgregarCommand}" 
+            <Button Command="{Binding AgregarCommand}"
+                    Style="{StaticResource botonVerde}"
                     Text="Guardar"
                     VerticalOptions="EndAndExpand"/>
         </StackLayout>

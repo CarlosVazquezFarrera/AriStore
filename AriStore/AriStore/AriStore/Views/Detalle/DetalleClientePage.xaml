@@ -35,6 +35,42 @@
                         ImageSource="historial"
                         Style="{StaticResource atrasBoton}"/>
             </Grid>
+            <!--Deudas-->
+            <CollectionView ItemsSource="{Binding Detalles}">
+                <CollectionView.EmptyView>
+                    <Grid>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               FontSize="Large"
+                               VerticalOptions="CenterAndExpand"
+                               Text="Sin datos"/>
+                    </Grid>
+                </CollectionView.EmptyView>
+            </CollectionView>
+            <!--Total-->
+            <Frame BackgroundColor="Black"
+                   HeightRequest="1"
+                   Padding="0"/>
+            <Label FontSize="Large"
+                   TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Total:"/>
+                        <Span Text=" "/>
+                        <Span Text="Total"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <!--Botones-->
+            <Grid ColumnDefinitions="*, *"
+                  RowDefinitions="Auto">
+                <Button Text="Nuevo Pedido"
+                        Style="{StaticResource botonRojo}"
+                        BackgroundColor="#F81313"/>
+                <Button Grid.Column="1" 
+                        Text="Abonar"
+                        Style="{StaticResource botonVerde}"
+                        BackgroundColor="#71D670"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

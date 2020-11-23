@@ -14,9 +14,13 @@ namespace AriStore.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            //Pantalla completa
+            Window.AddFlags(WindowManagerFlags.Fullscreen);
+            Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

@@ -3,6 +3,7 @@ using AriStore.OS;
 namespace AriStore.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -41,8 +42,20 @@ namespace AriStore.ViewModels
             IsValid();
             if (respuesta.Valid)
             {
-                MessagingCenter.Send<Cliente>(Cliente, "agregarCliente");
-                await Navigation.PopAsync();
+                try
+                {
+                    int resultado = await App.dataRepository.Insertar<Cliente>(Cliente);
+                    if (resultado == 1)
+                    {
+                        MessagingCenter.Send<Cliente>(Cliente, "agregarCliente");
+                        await Navigation.PopAsync();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    await App.Current.MainPage.DisplayAlert("Error", $"Hubo un error a agregar el cliente {Cliente.Nombre}", "Aceptar");
+                }
             }
             else
             {
