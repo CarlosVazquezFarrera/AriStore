@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AriStore.MainPage"
-             xmlns:ViewModel="clr-namespace:AriStore.ViewModels">
+             xmlns:ViewModel="clr-namespace:AriStore.ViewModels"
+             Style="{StaticResource App}">
     <ContentPage.BindingContext>
         <ViewModel:MainViewModel/>
     </ContentPage.BindingContext>
@@ -14,20 +15,15 @@
         <!--Header-->
         <Frame Style="{StaticResource FrameVerde}"
                Margin="0, 20, 0, 0">
-            <Grid ColumnDefinitions="*, 2*" 
-                  RowDefinitions="Auto">
-                <Label Grid.Column="0" 
-                       Grid.Row="0" 
-                       Text="Número"
-                       Style="{StaticResource LabelApp}"/>
-                <Label Grid.Column="1" 
+            <Label Grid.Column="1" 
                        Grid.Row="0" 
                        Text="Nombre"
                        Style="{StaticResource LabelApp}"/>
-            </Grid>
         </Frame>
         <!--Clientes-->
-        <CollectionView ItemsSource="{Binding Clientes}">
+        <CollectionView ItemsSource="{Binding Clientes}"
+                        SelectedItem="{Binding ClienteSeleccionado}"
+                        SelectionMode="Single">
             <CollectionView.EmptyView>
                 <Grid>
                     <Label HorizontalOptions="CenterAndExpand" 
@@ -38,13 +34,9 @@
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="*, 2*" 
+                    <Grid ColumnDefinitions="*" 
                           RowDefinitions="Auto">
-                        <Label Grid.Column="0" 
-                               Text="{Binding Id}"
-                               Style="{StaticResource LabelApp}"/>
-                        <Label Grid.Column="1"
-                               Style="{StaticResource LabelApp}">
+                        <Label Style="{StaticResource LabelApp}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding Nombre}"/>
@@ -60,7 +52,10 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <!--Agregar-->
-        <Button BackgroundColor="Transparent" Text="Nuevo"/>
+        <Button BackgroundColor="Transparent"
+                Command="{Binding NavegarCommand}"
+                HorizontalOptions="EndAndExpand" 
+                ImageSource="adduser"/>
     </StackLayout>
 
 </ContentPage>

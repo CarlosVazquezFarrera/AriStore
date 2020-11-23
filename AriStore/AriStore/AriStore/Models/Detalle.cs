@@ -5,7 +5,7 @@
     [Table("Detalle")]
     public partial class Detalle
     {
-        [PrimaryKey, AutoIncrement, NotNull]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [NotNull]
         public int IdTipo { get; set; }

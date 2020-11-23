@@ -19,7 +19,7 @@
             var isDataBaseCreated = CacheHelper.GetValue(CacheEnumerations.DataBaseCreate).GetAwaiter().GetResult();
             if (!Converter.StringToBool(isDataBaseCreated))
             {
-                conn.CreateTablesAsync<Cliente, Tipo, Adeudo, Detalle>();
+                conn.CreateTablesAsync<Cliente, Tipo, Adeudo, Detalle>().Wait();
                 CacheHelper.SetValue(CacheEnumerations.DataBaseCreate, "True");
             }
         }

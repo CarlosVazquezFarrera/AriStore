@@ -6,7 +6,7 @@
     [Table("Cliente")]
     public partial class Cliente
     {
-        [PrimaryKey, AutoIncrement, NotNull]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [MaxLength(50), NotNull]
         public string Nombre { get; set; }

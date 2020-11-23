@@ -13,5 +13,15 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="TextColor" Value="Black"/>
         </Style>
+        
+        <Style x:Key="App" TargetType="ContentPage">
+            <Setter Property="NavigationPage.HasNavigationBar" Value="False"/>
+        </Style>
+
+
+        <Style x:Key="atrasBoton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+        </Style>
     </Application.Resources>
 </Application>

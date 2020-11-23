@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AriStore.Views.AgregarCliente"
+             Style="{StaticResource App}"
+             xmlns:ViewModel="clr-namespace:AriStore.ViewModels">
+    <ContentPage.BindingContext>
+        <ViewModel:AgregarClienteViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="user"/>
+            <Entry Text="{Binding Cliente.Nombre}" 
+                   Placeholder="Nombre"/>
+            <Entry Text="{Binding Cliente.Paterno}" 
+                   Placeholder="Apellido Paterno"/>
+            <Entry Text="{Binding Cliente.Materno}" 
+                   Placeholder="Apellido Materno"/>
+            <Button Command="{Binding AgregarCommand}" 
+                    Text="Guardar"
+                    VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

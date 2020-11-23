@@ -5,7 +5,7 @@
     [Table("Tipo")]
     public partial class Tipo
     {
-        [PrimaryKey, NotNull, AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         [MaxLength(10), NotNull]

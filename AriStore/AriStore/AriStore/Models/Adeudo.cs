@@ -1,15 +1,15 @@
 ﻿namespace AriStore.Models
 {
     using SQLite;
-    using System.Collections.Generic;
+    using System;
 
     [Table("Adeudo")]
     public partial class Adeudo
     {
-        [PrimaryKey, AutoIncrement, NotNull]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [NotNull]
-        public int IdCliente { get; set; }
+        public Guid IdCliente { get; set; }
         [NotNull]
         public decimal Total { get; set; }
     }
