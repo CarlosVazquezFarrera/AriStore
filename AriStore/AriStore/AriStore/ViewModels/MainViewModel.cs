@@ -2,6 +2,7 @@
 {
     using AriStore.Models;
     using GalaSoft.MvvmLight;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -10,13 +11,13 @@
     {
         public MainViewModel()
         {
-            Clientes = new ObservableCollection<Cliente>
-            {
-                new Cliente{Id = 1, Nombre = "Diego", Paterno = "Ocaña", Materno = "Solorzana"},
-                new Cliente{Id = 2, Nombre = "Gisel", Paterno = "Marques", Materno = "Fuentes"}
-            };
-            clientesData = new List<Cliente>(Clientes);
-            
+            GetData();
+        }
+
+        private async void GetData()
+        {
+            clientesData = new List<Cliente>(await App.dataRepository.ObtenerTodo<Cliente>());
+            Clientes = new ObservableCollection<Cliente>(clientesData);
         }
         #region Atributes
         private string nombreFiltro;
