@@ -7,6 +7,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImagenConverter x:Key="IntToImg" />
+            <local:MxConverter x:Key="Mx" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -58,13 +59,28 @@
                         <Grid ColumnDefinitions=".5*, *, *" 
                               RowDefinitions="*"
                               Margin="0, 0, 0, 10">
-                            <Image Source="{Binding IdTipo,Converter={StaticResource IntToImg}}"/>
-                            <Label Grid.Column="1" 
-                                   Style="{StaticResource labelMedio}"
-                                   Text="{Binding Monto}"/>
-                            <Label Grid.Column="2" 
+                            <!--Imagen-->
+                            <Image Scale=".75" 
+                                   Source="{Binding IdTipo, Converter={StaticResource IntToImg}}"/>
+                            <!--Fecha-->
+                            <Label HorizontalOptions="Center" 
+                                   Grid.Column="1" 
                                    Style="{StaticResource labelMedio}"
                                    Text="{Binding Fecha}"/>
+                            <!--Monto-->
+                            <Label Grid.Column="2" 
+                                   Style="{StaticResource labelMedio}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding IdTipo, Converter={StaticResource Mx}}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Monto}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="MXN"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                
+                            </Label>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
