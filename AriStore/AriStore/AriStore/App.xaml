@@ -36,6 +36,13 @@
             <Setter Property="TextColor" Value="White"/>
             <Setter Property="BackgroundColor" Value="#C22222"/>
         </Style>
+        <Style BasedOn="{StaticResource BotonRedondo}" x:Key="botonTransparentColor" TargetType="Button">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
 
         <Style  x:Key="labelMedio" TargetType="Label">
             <Setter Property="TextColor" Value="Black"/>

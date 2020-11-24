@@ -41,6 +41,7 @@
                         Grid.Column="2"
                         ImageSource="historial"
                         Style="{StaticResource atrasBoton}"/>
+
             </Grid>
             <!--Deudas-->
             <Frame BackgroundColor="#71D670"
@@ -58,9 +59,9 @@
                     <DataTemplate>
                         <Grid ColumnDefinitions=".5*, *, *" 
                               RowDefinitions="*"
-                              Margin="0, 0, 0, 10">
+                              Margin="0, 0, 0, 15">
                             <!--Imagen-->
-                            <Image Scale=".75" 
+                            <Image Scale=".5" 
                                    Source="{Binding IdTipo, Converter={StaticResource IntToImg}}"/>
                             <!--Fecha-->
                             <Label HorizontalOptions="Center" 
@@ -69,7 +70,8 @@
                                    Text="{Binding Fecha}"/>
                             <!--Monto-->
                             <Label Grid.Column="2" 
-                                   Style="{StaticResource labelMedio}">
+                                   Style="{StaticResource labelMedio}"
+                                   FontAttributes="Bold">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding IdTipo, Converter={StaticResource Mx}}"/>
@@ -95,7 +97,7 @@
                     <FormattedString>
                         <Span Text="Total:"/>
                         <Span Text=" "/>
-                        <Span Text="Total"/>
+                        <Span Text="200"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -103,12 +105,12 @@
             <Grid ColumnDefinitions="*, *"
                   RowDefinitions="Auto">
                 <Button Text="Nuevo Pedido"
-                        Style="{StaticResource botonRojo}"
-                        BackgroundColor="#F81313"/>
+                        TextColor="Red"
+                        Style="{StaticResource botonTransparentColor}"/>
                 <Button Grid.Column="1" 
                         Text="Abonar"
-                        Style="{StaticResource botonVerde}"
-                        BackgroundColor="#71D670"/>
+                        Style="{StaticResource botonTransparentColor}"
+                        TextColor="#71D670"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AriStore.UC.RoundEntry"
+             xmlns:UC="clr-namespace:AriStore.UC">
+    <ContentView.Content>
+        <Frame BackgroundColor="White"
+                   BorderColor="Gray"
+                   CornerRadius="9"
+                   Margin="20"
+                   Padding="5">
+            <UC:BorderLessEntry Grid.ColumnSpan="2"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                PlaceholderColor ="#8A98BA"
+                                x:Name="Entry"/>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

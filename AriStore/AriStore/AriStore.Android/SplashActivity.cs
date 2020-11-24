@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AriStore.Droid
 {
-    [Activity(Label = "SplashActivity", 
+    [Activity(Label = "AriStore", 
         Theme = "@style/SplashTheme", 
         MainLauncher = true, 
         NoHistory = true, 
@@ -22,7 +22,6 @@ namespace AriStore.Droid
         {
             base.OnCreate(savedInstanceState);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
-
             // Create your application here
         }
     }

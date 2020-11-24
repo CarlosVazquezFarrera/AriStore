@@ -54,8 +54,9 @@
         </CollectionView>
         <!--Agregar-->
         <Button BackgroundColor="Transparent"
+                Style="{StaticResource botonTransparentColor}"
                 Command="{Binding NavegarCommand}"
-                HorizontalOptions="EndAndExpand" 
+                HorizontalOptions="EndAndExpand"
                 ImageSource="adduser"/>
     </StackLayout>
 
