@@ -4,4 +4,5 @@
     <color name="colorPrimary">#71D670</color>
     <color name="colorPrimaryDark">#71D670</color>
     <color name="colorAccent">#71D670</color>
+    <color name="splash_backgroud">@android:color/white</color>
 </resources>
