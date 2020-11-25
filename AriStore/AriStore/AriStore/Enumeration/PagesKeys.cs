@@ -4,6 +4,6 @@
     {
         AgregarCliente,
         DetalleCliente,
-        NuevoPedido
+        NuevoPedido,
     }
 }

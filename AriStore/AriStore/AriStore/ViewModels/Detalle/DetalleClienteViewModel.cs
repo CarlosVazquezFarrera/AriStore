@@ -1,9 +1,13 @@
 ﻿namespace AriStore.ViewModels.Detalle
 {
+    using AriStore.Enumeration;
     using AriStore.Models;
+    using AriStore.OS;
     using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
     using System;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
 
     public class DetalleClienteViewModel : BaseViewModel
     {
@@ -42,6 +46,14 @@
         }
         #endregion
 
+        public ICommand NavegarNuevoPedidoCommand
+        {
+            get
+            {
+                return new RelayCommand(NavegarNuevoPedido);
+            }
+        }
+
         #region Methods
         /// <summary>
         /// Retorna una isntancia del ViewModelSeleccionado
@@ -54,6 +66,11 @@
                 ViewModel = new DetalleClienteViewModel();
             }
             return ViewModel;
+        }
+
+        private async void NavegarNuevoPedido()
+        {
+            await Navigation.Navegar(PagesKeys.NuevoPedido, Cliente);
         }
         #endregion
     }

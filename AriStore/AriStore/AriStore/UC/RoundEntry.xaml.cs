@@ -51,7 +51,20 @@ namespace AriStore.UC
             entry.Entry.Text = (string)newValue;
         });
 
-
+        /// <summary>
+        /// Define el tipo de teclado del control
+        /// </summary>
+        public Keyboard Keyboard
+        {
+            get => (Keyboard)GetValue(KeyboardProperty);
+            set => SetValue(KeyboardProperty, value);
+        }
+        public static readonly BindableProperty KeyboardProperty = BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(RoundEntry), default(Keyboard),
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var entry = (RoundEntry)bindable;
+            entry.Entry.Keyboard = (Keyboard)newValue;
+        });
 
     }
 }

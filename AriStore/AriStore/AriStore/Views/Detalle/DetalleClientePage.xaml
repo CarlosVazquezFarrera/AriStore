@@ -104,7 +104,8 @@
             <!--Botones-->
             <Grid ColumnDefinitions="*, *"
                   RowDefinitions="Auto">
-                <Button Text="Nuevo Pedido"
+                <Button Command="{Binding NavegarNuevoPedidoCommand}" 
+                        Text="Nuevo Pedido"
                         TextColor="Red"
                         Style="{StaticResource botonTransparentColor}"/>
                 <Button Grid.Column="1" 

@@ -3,8 +3,10 @@
     using AriStore.Enumeration;
     using AriStore.Models;
     using AriStore.ViewModels.Detalle;
+    using AriStore.ViewModels.Nuevo_Pedido;
     using AriStore.Views;
     using AriStore.Views.Detalle;
+    using AriStore.Views.Nuevo_Pedido;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -40,6 +42,10 @@
                 case PagesKeys.DetalleCliente:
                     DetalleClienteViewModel.GetInstance().Cliente = (Cliente)parameters[0];
                     await IsInstanced(new DetalleClientePage());
+                    break;
+                case PagesKeys.NuevoPedido:
+                    NuevoPedidoViewModel.GetInstance().Cliente = (Cliente)parameters[0];
+                    await IsInstanced(new NuevoPedidoPage());
                     break;
                 default:
                     break;
