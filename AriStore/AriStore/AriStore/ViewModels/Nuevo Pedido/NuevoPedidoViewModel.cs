@@ -14,7 +14,7 @@
         private Cliente cliente;
         #endregion
 
-        #region Cliente
+        #region Properties
         public Cliente Cliente
         {
             get { return this.cliente; }

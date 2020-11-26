@@ -2,6 +2,7 @@
 using AriStore.OS;
 namespace AriStore.ViewModels
 {
+    using AriStore.Enumeration;
     using GalaSoft.MvvmLight.Command;
     using System;
     using System.Windows.Input;
@@ -9,10 +10,13 @@ namespace AriStore.ViewModels
 
     public class AgregarClienteViewModel: BaseViewModel
     {
+        #region Constrcutor
         public AgregarClienteViewModel()
         {
-            Cliente = new Cliente { Id = 1, Nombre = "Carlos", Paterno = "Vazquez", Materno = "Farrera"};
-        }
+            Cliente = new Cliente { Id = 1, Nombre = "Carlos", Paterno = "Vazquez", Materno = "Farrera" };
+        } 
+        #endregion
+
         #region Atributes
         private Cliente cliente;
         private Response respuesta = new Response();
@@ -59,10 +63,13 @@ namespace AriStore.ViewModels
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("", respuesta.Mensaje, "Aceptar");
+                await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, respuesta.Mensaje);
             }
         }
-
+        /// <summary>
+        /// Realiza todas las validaciones referente los campos requeridos 
+        /// </summary>
+        /// <returns></returns>
         private Response IsValid()
         {
             respuesta.Valid = false;

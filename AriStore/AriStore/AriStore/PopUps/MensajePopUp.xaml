@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AriStore.PopUps.MnesajePopUp"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 Style="{StaticResource PopUpMesanje}">
+    <ContentPage.Content>
+
+        <Frame CornerRadius="15" 
+               HorizontalOptions="CenterAndExpand" 
+               Padding="15"
+               VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <Label Text="{Binding Mensaje}"
+                       Style="{StaticResource labelMedio}"/>
+                <Button Command="{Binding AceptarCommand}" 
+                        Style="{StaticResource botonVerde}"
+                        Text="Aceptar"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>
