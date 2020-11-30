@@ -58,7 +58,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions=".5*, *, *" 
-                              RowDefinitions="*"
+                              RowDefinitions="*, 1"
                               Margin="0, 0, 0, 15">
                             <!--Imagen-->
                             <Image Scale=".5" 
@@ -67,11 +67,13 @@
                             <Label HorizontalOptions="Center" 
                                    Grid.Column="1" 
                                    Style="{StaticResource labelMedio}"
-                                   Text="{Binding Fecha}"/>
+                                   Text="{Binding Fecha}"
+                                   VerticalOptions="Center"/>
                             <!--Monto-->
                             <Label Grid.Column="2" 
                                    Style="{StaticResource labelMedio}"
-                                   FontAttributes="Bold">
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding IdTipo, Converter={StaticResource Mx}}"/>
@@ -81,7 +83,7 @@
                                         <Span Text="MXN"/>
                                     </FormattedString>
                                 </Label.FormattedText>
-                                
+
                             </Label>
                         </Grid>
                     </DataTemplate>
@@ -108,7 +110,8 @@
                         Text="Nuevo Pedido"
                         TextColor="Red"
                         Style="{StaticResource botonTransparentColor}"/>
-                <Button Grid.Column="1" 
+                <Button Command="{Binding NavegarAbonoCommand}" 
+                        Grid.Column="1" 
                         Text="Abonar"
                         Style="{StaticResource botonTransparentColor}"
                         TextColor="#71D670"/>

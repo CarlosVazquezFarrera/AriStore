@@ -4,9 +4,7 @@
     public class NuevoPedidoViewModel : BaseViewModel
     {
         #region Constructor
-        private NuevoPedidoViewModel() {
-            Cliente = new Cliente { Nombre = "Carlos"};
-        }
+        private NuevoPedidoViewModel() {}
         #endregion
 
         #region Atributes

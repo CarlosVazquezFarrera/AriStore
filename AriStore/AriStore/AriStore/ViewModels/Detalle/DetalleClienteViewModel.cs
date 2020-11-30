@@ -54,6 +54,13 @@
             }
         }
 
+        public ICommand NavegarAbonoCommand
+        {
+            get
+            {
+                return new RelayCommand(NavegarAbono);
+            }
+        }
         #region Methods
         /// <summary>
         /// Retorna una isntancia del ViewModelSeleccionado
@@ -71,6 +78,11 @@
         private async void NavegarNuevoPedido()
         {
             await Navigation.Navegar(PagesKeys.NuevoPedido, Cliente);
+        }
+
+        private async void NavegarAbono()
+        {
+            await Navigation.Navegar(PagesKeys.Abono, Cliente);
         }
         #endregion
     }

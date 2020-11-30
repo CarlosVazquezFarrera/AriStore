@@ -5,5 +5,6 @@
         AgregarCliente,
         DetalleCliente,
         NuevoPedido,
+        Abono
     }
 }
