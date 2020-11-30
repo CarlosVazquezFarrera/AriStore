@@ -4,10 +4,12 @@
     using AriStore.Models;
     using AriStore.ViewModels.Abono;
     using AriStore.ViewModels.Detalle;
+    using AriStore.ViewModels.Historial;
     using AriStore.ViewModels.Nuevo_Pedido;
     using AriStore.Views;
     using AriStore.Views.Abono;
     using AriStore.Views.Detalle;
+    using AriStore.Views.Historial;
     using AriStore.Views.Nuevo_Pedido;
     using System.Collections.Generic;
     using System.Linq;
@@ -52,6 +54,10 @@
                 case PagesKeys.Abono:
                     AbonoViewModel.GetInstance().Cliente = (Cliente)parameters[0];
                     await IsInstanced(new AbonoPage());
+                    break;
+                case PagesKeys.Historial:
+                    HistorialViewModel.GetInstance().Cliente = (Cliente)parameters[0];
+                    await IsInstanced(new HistorialPage());
                     break;
                 default:
                     break;

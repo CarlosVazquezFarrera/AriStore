@@ -61,6 +61,14 @@
                 return new RelayCommand(NavegarAbono);
             }
         }
+
+        public ICommand NavegarHistotrialCommand
+        {
+            get
+            {
+                return new RelayCommand(NavegarHistotrial);
+            }
+        }
         #region Methods
         /// <summary>
         /// Retorna una isntancia del ViewModelSeleccionado
@@ -83,6 +91,10 @@
         private async void NavegarAbono()
         {
             await Navigation.Navegar(PagesKeys.Abono, Cliente);
+        }
+        private async void NavegarHistotrial()
+        {
+            await Navigation.Navegar(PagesKeys.Historial, Cliente);
         }
         #endregion
     }

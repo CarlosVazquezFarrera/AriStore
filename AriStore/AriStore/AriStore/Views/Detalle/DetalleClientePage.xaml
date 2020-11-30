@@ -37,7 +37,7 @@
                     </Label.FormattedText>
                 </Label>
                 <!--Historial-->
-                <Button Command="{Binding AtrasCommand}"
+                <Button Command="{Binding NavegarHistotrialCommand}"
                         Grid.Column="2"
                         ImageSource="historial"
                         Style="{StaticResource atrasBoton}"/>
