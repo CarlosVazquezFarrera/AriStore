@@ -1,5 +1,6 @@
 ﻿namespace AriStore.ViewModels.Nuevo_Pedido
 {
+    using AriStore.Enumeration;
     using AriStore.Models;
     using AriStore.OS;
     using GalaSoft.MvvmLight.Command;
@@ -10,20 +11,24 @@
     public class NuevoPedidoViewModel : BaseViewModel
     {
         #region Constructor
-        private NuevoPedidoViewModel() {}
+        private NuevoPedidoViewModel() 
+        {
+            Detalle = new Detalle();
+        }
         #endregion
 
         #region Atributes
         private static NuevoPedidoViewModel ViewModel;
-        private Cliente cliente;
         private Detalle detalle;
+        private Adeudo adeudo;
+        private Response response = new Response();
         #endregion
 
         #region Properties
-        public Cliente Cliente
+        public Adeudo Adeudo
         {
-            get { return this.cliente; }
-            set { Set(ref this.cliente, value); }
+            get { return this.adeudo; }
+            set { Set(ref this.adeudo, value); }
         }
 
         public Detalle Detalle
@@ -54,15 +59,43 @@
             {
                 ViewModel = new NuevoPedidoViewModel();
             }
+            ViewModel.Detalle = new Detalle();
             return ViewModel;
         }
 
         private async void NuevoPedido()
         {
-            this.Detalle.IdTipo = 1;
-            this.Detalle.Fecha = DateTime.Today;
-            MessagingCenter.Send<Detalle>(Detalle, "nuevoPedido");
-            await Navigation.PopAsync();
+            IsValid();
+            if (response.Valid)
+            {
+                this.Detalle.IdTipo = 1;
+                this.Detalle.IdAdeudo = 1;
+                this.Detalle.Fecha = DateTime.Today;
+                MessagingCenter.Send<Detalle>(Detalle, "nuevoPedido");
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, response.Mensaje);
+            }
+           
+        }
+        /// <summary>
+        /// Valida si lo que se encuentra en el Entry es válido para ingresar
+        /// </summary>
+        /// <returns></returns>
+        private Response IsValid()
+        {
+            response.Valid = false;
+
+            if (this.Detalle.Monto <= 0)
+            {
+                response.Mensaje = "Debe ingregar una cantidad mayor a 0";
+                return response;
+            }
+            response.Valid = true;
+            response.Mensaje = string.Empty;
+            return response;
         }
         #endregion
     }

@@ -48,7 +48,7 @@
                     await IsInstanced(new DetalleClientePage());
                     break;
                 case PagesKeys.NuevoPedido:
-                    NuevoPedidoViewModel.GetInstance().Cliente = (Cliente)parameters[0];
+                    NuevoPedidoViewModel.GetInstance().Adeudo = (Adeudo)parameters[0];
                     await IsInstanced(new NuevoPedidoPage());
                     break;
                 case PagesKeys.Abono:

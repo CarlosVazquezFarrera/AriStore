@@ -9,10 +9,8 @@
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [NotNull]
-        public Guid IdCliente { get; set; }
+        public int IdCliente { get; set; }
         [NotNull]
         public float Total { get; set; }
-        [NotNull]
-        public DateTime Fecha { get; set; }
     }
 }

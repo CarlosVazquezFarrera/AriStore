@@ -21,8 +21,12 @@
             new Detalle{ Id = 4, IdAdeudo = 1, IdTipo = 1, Monto = 2600, Fecha = DateTime.Today} ,
             };
 
+            Adeudo = new Adeudo { Id = 1, Total = 500 };
+            Total = Adeudo.Total;
+
             MessagingCenter.Subscribe<Detalle>(this, "nuevoPedido", (nuevoPedido) =>
             {
+                Total += nuevoPedido.Monto;
                 Detalles.Add(nuevoPedido);
             });
         }
@@ -32,18 +36,29 @@
         private ObservableCollection<Detalle> detalles;
         private static DetalleClienteViewModel ViewModel;
         private Cliente cliente;
+        private Adeudo adeudo;
+        private float total;
         #endregion
 
         #region Properties
         /// <summary>
         /// Cliente que se ha seleccionado
         /// </summary>
+        public float Total
+        {
+            get { return this.total; }
+            set { Set(ref this.total, value); }
+        }
         public Cliente Cliente
         {
             get { return this.cliente; }
             set { Set(ref this.cliente, value); }
         }
-
+        public Adeudo Adeudo
+        {
+            get { return this.adeudo; }
+            set { Set(ref this.adeudo, value); }
+        }
         public ObservableCollection<Detalle> Detalles
         {
             get { return this.detalles; }
@@ -90,7 +105,8 @@
 
         private async void NavegarNuevoPedido()
         {
-            await Navigation.Navegar(PagesKeys.NuevoPedido, Cliente);
+            Adeudo.IdCliente = Cliente.Id;
+            await Navigation.Navegar(PagesKeys.NuevoPedido, Adeudo);
         }
 
         private async void NavegarAbono()

@@ -100,7 +100,7 @@
                     <FormattedString>
                         <Span Text="Total:"/>
                         <Span Text=" "/>
-                        <Span Text="200"/>
+                        <Span Text="{Binding Total}"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
