@@ -3,23 +3,28 @@
     using AriStore.Enumeration;
     using AriStore.Models;
     using AriStore.OS;
-    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
+    using Xamarin.Forms;
 
     public class DetalleClienteViewModel : BaseViewModel
     {
         #region Constructor
         private DetalleClienteViewModel() {
             Detalles = new ObservableCollection<Detalle> { 
-            new Detalle{ Id = 1, IdAdeudo = 1, IdTipo = 1, Monto =  1200, Fecha = DateTime.Today.ToShortDateString()} ,
-            new Detalle{ Id = 2, IdAdeudo = 1, IdTipo = 0, Monto = 200, Fecha = DateTime.Today.ToShortDateString()} ,
-            new Detalle{ Id = 3, IdAdeudo = 1, IdTipo = 0, Monto = 300.50F, Fecha = DateTime.Today.ToShortDateString()} ,
-            new Detalle{ Id = 4, IdAdeudo = 1, IdTipo = 0, Monto = 50, Fecha = DateTime.Today.ToShortDateString()} ,
-            new Detalle{ Id = 4, IdAdeudo = 1, IdTipo = 1, Monto = 2600, Fecha = DateTime.Today.ToShortDateString()} ,
+            new Detalle{ Id = 1, IdAdeudo = 1, IdTipo = 1, Monto =  1200, Fecha = DateTime.Today} ,
+            new Detalle{ Id = 2, IdAdeudo = 1, IdTipo = 0, Monto = 200, Fecha = DateTime.Today} ,
+            new Detalle{ Id = 3, IdAdeudo = 1, IdTipo = 0, Monto = 300.50F, Fecha = DateTime.Today} ,
+            new Detalle{ Id = 4, IdAdeudo = 1, IdTipo = 0, Monto = 50, Fecha = DateTime.Today} ,
+            new Detalle{ Id = 4, IdAdeudo = 1, IdTipo = 1, Monto = 2600, Fecha = DateTime.Today} ,
             };
+
+            MessagingCenter.Subscribe<Detalle>(this, "nuevoPedido", (nuevoPedido) =>
+            {
+                Detalles.Add(nuevoPedido);
+            });
         }
         #endregion
 

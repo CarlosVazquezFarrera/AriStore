@@ -11,8 +11,10 @@
                     ImageSource="atras"
                     Style="{StaticResource atrasBoton}"/>
             <UC:RoundEntry Keyboard="Numeric" 
-                           Placeholder="Monto"/>
-            <Button FontSize="Large"
+                           Placeholder="Monto"
+                           Text="{Binding Detalle.Monto}"/>
+            <Button Command="{Binding NuevoPedidoCommand}" 
+                    FontSize="Large"
                     Style="{StaticResource botonRojo}"
                     Text="Nuevo Pedido"
                     VerticalOptions="EndAndExpand"/>

@@ -15,7 +15,7 @@
         [NotNull]
         public float Monto { get; set; }
         [NotNull]
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
 
     }
 

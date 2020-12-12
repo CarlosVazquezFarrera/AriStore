@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <local:ImagenConverter x:Key="IntToImg" />
             <local:MxConverter x:Key="Mx" />
+            <local:DateConverter x:Key="Date" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -67,7 +68,7 @@
                             <Label HorizontalOptions="Center" 
                                    Grid.Column="1" 
                                    Style="{StaticResource labelMedio}"
-                                   Text="{Binding Fecha}"
+                                   Text="{Binding Fecha, Converter={StaticResource Date}}"
                                    VerticalOptions="Center"/>
                             <!--Monto-->
                             <Label Grid.Column="2" 

@@ -51,14 +51,14 @@ namespace AriStore.ViewModels
                     int resultado = await App.dataRepository.Insertar<Cliente>(Cliente);
                     if (resultado == 1)
                     {
-                        MessagingCenter.Send<Cliente>(Cliente, "agregarCliente");
+                        MessagingCenter.Send<Cliente>(Cliente, "nuevoPedido");
                         await Navigation.PopAsync();
                     }
                 }
                 catch (Exception)
                 {
 
-                    await App.Current.MainPage.DisplayAlert("Error", $"Hubo un error a agregar el cliente {Cliente.Nombre}", "Aceptar");
+                    await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, "Error", $"Hubo un error a agregar el cliente {Cliente.Nombre}");
                 }
             }
             else
