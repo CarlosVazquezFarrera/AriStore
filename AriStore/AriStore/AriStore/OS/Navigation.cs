@@ -52,7 +52,7 @@
                     await IsInstanced(new NuevoPedidoPage());
                     break;
                 case PagesKeys.Abono:
-                    AbonoViewModel.GetInstance().Cliente = (Cliente)parameters[0];
+                    AbonoViewModel.GetInstance().Adeudo = (Adeudo)parameters[0];
                     await IsInstanced(new AbonoPage());
                     break;
                 case PagesKeys.Historial:

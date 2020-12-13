@@ -10,9 +10,11 @@
             <Button Command="{Binding AtrasCommand}"
                     ImageSource="atras"
                     Style="{StaticResource atrasBoton}"/>
-            <UC:RoundEntry Keyboard="Numeric" 
+            <UC:RoundEntry Text="{Binding Detalle.Monto}" 
+                           Keyboard="Numeric" 
                            Placeholder="Monto"/>
-            <Button FontSize="Large"
+            <Button Command="{Binding NuevoAbonoCommand}" 
+                    FontSize="Large"
                     Style="{StaticResource botonVerde}"
                     Text="Abonar"
                     VerticalOptions="EndAndExpand"/>

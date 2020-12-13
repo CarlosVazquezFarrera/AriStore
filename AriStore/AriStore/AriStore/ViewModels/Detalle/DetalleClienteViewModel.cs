@@ -100,7 +100,7 @@
 
         private async void NavegarAbono()
         {
-            await Navigation.Navegar(PagesKeys.Abono, Cliente);
+            await Navigation.Navegar(PagesKeys.Abono, Adeudo);
         }
         private async void NavegarHistotrial()
         {
