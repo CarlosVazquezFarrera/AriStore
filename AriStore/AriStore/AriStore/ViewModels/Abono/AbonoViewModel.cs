@@ -55,6 +55,7 @@
             IsValid();
             if (response.Valid)
             {
+
                 try
                 {
                     Detalle.IdAdeudo = Adeudo.Id;
@@ -92,6 +93,11 @@
         private Response IsValid()
         {
             response.Valid = false;
+            if(Adeudo.Total == 0)
+            {
+                response.Mensaje = "El cliente no tiene aduedo alguno";
+                return response;
+            }
             if (this.Detalle.Monto <= 0)
             {
                 response.Mensaje = "Debe ingregar una cantidad mayor a 0";
