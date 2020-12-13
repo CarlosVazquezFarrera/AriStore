@@ -36,6 +36,7 @@
         
         <Style x:Key="App" TargetType="ContentPage">
             <Setter Property="NavigationPage.HasNavigationBar" Value="False"/>
+            <Setter Property="Padding" Value="0, 20, 0, 0"/>
         </Style>
 
 
