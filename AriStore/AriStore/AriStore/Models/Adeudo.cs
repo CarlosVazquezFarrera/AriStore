@@ -9,7 +9,7 @@
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [NotNull]
-        public int IdCliente { get; set; }
+        public Guid IdCliente { get; set; }
         [NotNull]
         public float Total { get; set; }
     }

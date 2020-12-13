@@ -6,15 +6,11 @@
     using GalaSoft.MvvmLight.Command;
     using System;
     using System.Windows.Input;
-    using Xamarin.Forms;
 
     public class NuevoPedidoViewModel : BaseViewModel
     {
         #region Constructor
-        private NuevoPedidoViewModel() 
-        {
-            Detalle = new Detalle();
-        }
+        private NuevoPedidoViewModel() {}
         #endregion
 
         #region Atributes
@@ -25,12 +21,17 @@
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Adeudo al que pertence el Nuevo pedido
+        /// </summary>
         public Adeudo Adeudo
         {
             get { return this.adeudo; }
             set { Set(ref this.adeudo, value); }
         }
-
+        /// <summary>
+        /// Nuevo pedido a relizar
+        /// </summary>
         public Detalle Detalle
         {
             get { return this.detalle; }
@@ -59,20 +60,46 @@
             {
                 ViewModel = new NuevoPedidoViewModel();
             }
-            ViewModel.Detalle = new Detalle();
+            ViewModel.Detalle = new Detalle { IdTipo = 1, Fecha = DateTime.Today };
             return ViewModel;
         }
 
+        /// <summary>
+        /// Registra el nuevo pedido que se ha ingresado
+        /// </summary>
         private async void NuevoPedido()
         {
             IsValid();
             if (response.Valid)
             {
-                this.Detalle.IdTipo = 1;
-                this.Detalle.IdAdeudo = 1;
-                this.Detalle.Fecha = DateTime.Today;
-                MessagingCenter.Send<Detalle>(Detalle, "nuevoPedido");
-                await Navigation.PopAsync();
+                try
+                {
+                    Detalle.IdAdeudo = Adeudo.Id;
+                    int detalleResultado = await App.dataRepository.Insertar<Detalle>(Detalle);
+                    if (detalleResultado == 1)
+                    {
+                        Adeudo.Total += Detalle.Monto;
+                        int adeudoResultado = await App.dataRepository.Actualizar<Adeudo>(Adeudo);
+                        if (adeudoResultado == 1)
+                        {
+
+                            await Navigation.PopAsync();
+                        }
+                        else
+                        {
+                            await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, $"Hubo un error al ingresar la cantidad");
+                        }
+                    }
+                    else
+                    {
+                        await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, $"Hubo un error al ingresar la cantidad");
+                    }
+                }
+                catch (Exception)
+                {
+                    await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, $"Hubo un error al ingresar la cantidad");
+                }
+
             }
             else
             {

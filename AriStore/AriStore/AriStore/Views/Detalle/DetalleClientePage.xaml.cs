@@ -12,5 +12,10 @@
             InitializeComponent();
             BindingContext = DetalleClienteViewModel.GetInstance();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await DetalleClienteViewModel.GetInstance().GetData();
+        }
     }
 }

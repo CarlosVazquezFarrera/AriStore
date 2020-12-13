@@ -6,6 +6,7 @@
     using SQLite;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class DataRepository
@@ -27,22 +28,76 @@
 
         #region Methods
 
+        public async Task<List<T>> QueryListAsync<T>(string valores, string tabla, string condicion) where T : new()
+        {
+            try
+            {
+                string query = $"SELECT {valores} FROM {tabla} WHERE {condicion}";
+                return await conn.QueryAsync<T>(query);
+            }
+            catch (Exception)
+            {
+
+                return new List<T>();
+            }
+        }
+
         /// <summary>
         /// Ejecuta un Query, el cual debe ser escrito manualmente y enviado como un parametro String
         /// </summary>
         /// <param name="query"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<List<T>> QueryAsync<T>(string query, params object[] parameters) where T : new() 
+        public async Task<List<T>> QueryAsync<T>(string query) where T : new() 
         {
             try
             {
-                return await conn.QueryAsync<T>(query, parameters);
+                return await conn.QueryAsync<T>(query);
             }
             catch (Exception)
             {
 
                 return new List<T>();
+            }
+        }
+        /// <summary>
+        /// Recupera un único objeto a través de un Query cono setnencia Where
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="valores"></param>
+        /// <param name="tabla"></param>
+        /// <param name="condicion"></param>
+        /// <returns></returns>
+        public async Task<T> ObtenerPorIdYQuery<T>(string valores, string tabla, string condicion) where T : new()
+        {
+            try
+            {
+                string query = $"SELECT {valores} FROM {tabla} WHERE {condicion}";
+                var datos = await conn.QueryAsync<T>(query);
+                return datos.ToList().FirstOrDefault();
+            }
+            catch (Exception)
+            {
+
+                return default(T);
+            }
+        }
+       
+        /// <summary>
+        /// Inserta un objeto si ya existe, lo actualiza si no es el caso 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enttidad"></param>
+        /// <returns></returns>
+        public async Task<int> InsertarOReemplazar<T>(T enttidad)
+        {
+            try
+            {
+                return await conn.InsertOrReplaceAsync(enttidad);
+            }
+            catch (Exception)
+            {
+                return 0;
             }
         }
 

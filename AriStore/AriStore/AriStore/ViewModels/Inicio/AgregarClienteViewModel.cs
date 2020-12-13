@@ -13,12 +13,12 @@ namespace AriStore.ViewModels
         #region Constrcutor
         public AgregarClienteViewModel()
         {
-            Cliente = new Cliente { Id = 1, Nombre = "Carlos", Paterno = "Vazquez", Materno = "Farrera" };
+            Cliente.Id = Guid.NewGuid();
         } 
         #endregion
 
         #region Atributes
-        private Cliente cliente;
+        private Cliente cliente = new Cliente();
         private Response respuesta = new Response();
         #endregion
 
@@ -51,14 +51,26 @@ namespace AriStore.ViewModels
                     int resultado = await App.dataRepository.Insertar<Cliente>(Cliente);
                     if (resultado == 1)
                     {
-                        MessagingCenter.Send<Cliente>(Cliente, "nuevoPedido");
-                        await Navigation.PopAsync();
+                        int resultadoDeuda = await App.dataRepository.Insertar<Adeudo>(new Adeudo { IdCliente = Cliente.Id, Total = 0 });
+                        if (resultadoDeuda == 1)
+                        {
+                            MessagingCenter.Send<Cliente>(Cliente, "agregarCliente");
+                            await Navigation.PopAsync();
+                        }
+                        else
+                        {
+                            await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, $"Hubo un error al crear la cuenta de {Cliente.Nombre}");
+                        }
+                    }
+                    else
+                    {
+                        await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, $"Hubo un error a agregar el cliente {Cliente.Nombre}");
                     }
                 }
                 catch (Exception)
                 {
 
-                    await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, "Error", $"Hubo un error a agregar el cliente {Cliente.Nombre}");
+                    await PopUpNavigation.PushModalAsync(PopUpKeys.Mensaje, $"Hubo un error a agregar el cliente {Cliente.Nombre}");
                 }
             }
             else

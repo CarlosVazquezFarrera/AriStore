@@ -1,13 +1,13 @@
 ﻿namespace AriStore.Models
 {
     using SQLite;
-    using System.Collections.Generic;
+    using System;
 
     [Table("Cliente")]
     public partial class Cliente
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        [PrimaryKey]
+        public Guid Id { get; set; }
         [MaxLength(50), NotNull]
         public string Nombre { get; set; }
         [MaxLength(50), NotNull]
